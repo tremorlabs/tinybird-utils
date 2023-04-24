@@ -1,6 +1,6 @@
 import { ClientResponse, QueryError, TbConfig } from './types';
 
-export async function client<T>(
+export default async function client<T>(
   path: string,
   params?: RequestInit,
   config?: TbConfig

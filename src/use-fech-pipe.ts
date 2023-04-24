@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { useQuery } from './use-query';
 import { TbConfigContext } from './tb-config';
-import { client } from './client';
+import client from './client';
 import { PipeParams, TbConfig, QueryPipe } from './types';
 import { BASE_URL } from './constants';
 
@@ -17,7 +17,7 @@ function queryPipe<T>(
     searchParams.set(key, value as string);
   });
 
-  return client(`/pipes/${name}.json?${searchParams}`, {}, config);
+  return client(`${name}.json?${searchParams}`, {}, config);
 }
 
 type PipeFetcherArgs<T> = [name: string, params: Partial<PipeParams<T>>, config: TbConfig];
