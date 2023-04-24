@@ -1,6 +1,6 @@
 {
   "name": "tremor-tinybird-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tinybird plugin for data fetching",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
