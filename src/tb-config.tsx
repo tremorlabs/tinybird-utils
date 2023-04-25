@@ -11,7 +11,7 @@ export const TbConfigContext = createContext<TbConfig>({
   setToken: undefined
 });
 
-export interface TbConfigProps extends TbConfig {
+export interface TbConfigProviderProps extends TbConfig {
   children: ReactNode;
 }
 
@@ -20,7 +20,7 @@ export const TbConfigProvider = ({
   token,
   setToken,
   children
-}: TbConfigProps) => (
+}: TbConfigProviderProps) => (
   <TbConfigContext.Provider
     value={{
       baseUrl,
