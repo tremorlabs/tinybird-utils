@@ -1,5 +1,6 @@
 import client from './client';
-import { TbConfigProvider } from './tb-config';
+import * as tbConfig from './tb-config';
 import useFetchPipe from './use-fech-pipe';
+import * as types from './types';
 
-export { useFetchPipe, client, TbConfigProvider };
+export { useFetchPipe, client, tbConfig, types };
