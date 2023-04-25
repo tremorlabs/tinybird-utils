@@ -6,14 +6,14 @@ npm i trm-tb-plugin
 
 ### API
 
-The plugin exports a `useFetchPipe` function that enables easily querying Tinybird pipes using [SWR](https://swr.vercel.app/).
+The plugin exports a `useFetchPipe` function that provides a single interface to easily query Tinybird pipes using [SWR](https://swr.vercel.app/).
 
 _Note_: Only JSON respones are supported for now.
 
 **Arguments:**
 
-- `name`: The name of the Tinybird pipe
-- `queryParams` (optional): The query parameters of the pipe as a JSON-object
+- `name`: The name of the Tinybird pipe.
+- `queryParams` (optional): The query parameters of the pipe as a JSON-object.
 - `config` (optional): The Tinybird configuration as a JSON-object.
 
 **Example:**
@@ -72,7 +72,7 @@ export default function ContextProvider({ children }) {
 }
 ```
 
-The config values can be set in one of the `TbConfigProvider`s child components using the `TbConfigContext` and provided set functions.
+The config values can be set in one of the `TbConfigProvider`s child components using the `TbConfigContext` and the provided setters:
 
 ```jsx
 // Example.tsx
@@ -84,7 +84,7 @@ const { setToken, setBaseUrl } = useContext(TbConfigContext);
 ...
 ```
 
-Once the config parameters are set in the `TbConfigProvider`, the `useFetchPipe` function will automatically obtain the comfiguration from the `TbConfigContext`.
+Once the config parameters are set in the `TbConfigProvider`, the `useFetchPipe` function will automatically obtain the config from the `TbConfigContext`.
 
 **(2) Directly providing a config via the `config` argument of the `useFetchPipe` as a JSON-object.**
 
@@ -97,6 +97,7 @@ const { data } = useFetchPipe(
         },
         {
           token: '<my tinybird token>'
+          // Optional
           baseUrl: 'https://api.us-east.tinybird.co/v0/pipes/'
         }
     )
