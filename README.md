@@ -8,7 +8,7 @@ npm i trm-tb-plugin
 
 The plugin exports a `useFetchPipe` function that provides a single interface to easily query [Tinybird pipes](https://www.tinybird.co/docs/concepts/pipes.html) using [SWR](https://swr.vercel.app/).
 
-_Note_: Only JSON respones are supported for now and SWR `^2.0.0` is required.
+_Note_: Only JSON responses are supported for now and SWR `^2.0.0` is required.
 
 **Arguments:**
 
