@@ -32,11 +32,11 @@ export default function useFetchPipe<T>(
   queryParams: Partial<PipeParams<T>> = {},
   config?: TbConfig
 ) {
-  const contextConfig = useContext(TbConfigContext);
-  const token = contextConfig.token || config?.token;
-  const baseUrl = config?.baseUrl ?? contextConfig.baseUrl ?? BASE_URL;
+  const configContext = useContext(TbConfigContext);
+  const token = configContext.token || config?.token;
+  const baseUrl = config?.baseUrl ?? configContext.baseUrl ?? BASE_URL;
 
   if (!token) throw new Error('Tinybird token not found');
 
-  return useQuery([name, queryParams, { token: token, baseUrl: baseUrl }], pipeFetcher<T>);
+  return useQuery([name, queryParams, { token, baseUrl }], pipeFetcher<T>);
 }
