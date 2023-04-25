@@ -5,8 +5,6 @@ export default async function client<T>(
   params?: RequestInit,
   config?: TbConfig
 ): Promise<ClientResponse<T>> {
-  console.log('TOKEN', config?.token);
-  console.log('BASE_URL', config?.baseUrl);
   if (!config?.token || !config?.baseUrl) throw new Error('Configuration not found');
   const { token, baseUrl } = config;
 
