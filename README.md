@@ -8,7 +8,7 @@ npm i trm-tb-plugin
 
 The plugin exports a `useFetchPipe` function that provides a single interface to easily query Tinybird pipes using [SWR](https://swr.vercel.app/).
 
-_Note_: Only JSON respones are supported for now.
+_Note_: Only JSON respones are supported for now and SWR `^2.0.0` is required.
 
 **Arguments:**
 
@@ -21,19 +21,19 @@ _Note_: Only JSON respones are supported for now.
 ```jsx
 // Example.tsx
 import { useFetchPipe } from 'trm-tb-plugin';
-import { LineChart } from "@tremor/react";
+import { LineChart } from '@tremor/react';
 
 export default function Example() {
     const { data, status } = useFetchPipe(
-        "my_sales_data_pipe",
+        'my_sales_data_pipe',
         {
-            date_from: "2023-01-01",
-            date_to: "2023-03-01",
+            date_from: '2023-01-01',
+            date_to: '2023-03-01',
         }
     );
 
     return (
-        status === "loading"
+        status === 'loading'
             ? <p>Loading...</p>
             : (
                 <LineChart
