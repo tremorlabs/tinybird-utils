@@ -15,6 +15,7 @@ _Note_: Only JSON responses are supported for now and SWR `^2.0.0` is required.
 - `name`: The name of the Tinybird pipe.
 - `queryParams` (optional): The query parameters of the pipe as a JSON-object.
 - `config` (optional): The Tinybird configuration as a JSON-object.
+- `responseType` (optional): The API response type. `'JSON' | 'CSV' | 'Ndjson' | 'Parquet'`
 
 **Example:**
 
@@ -24,25 +25,16 @@ import { useFetchPipe } from 'trm-tb-plugin';
 import { LineChart } from '@tremor/react';
 
 export default function Example() {
-    const { data, status } = useFetchPipe(
-        'my_sales_data_pipe',
-        {
-            date_from: '2023-01-01',
-            date_to: '2023-03-01',
-        }
-    );
+  const { data, status } = useFetchPipe('my_sales_data_pipe', {
+    date_from: '2023-01-01',
+    date_to: '2023-03-01'
+  });
 
-    return (
-        status === 'loading'
-            ? <p>Loading...</p>
-            : (
-                <LineChart
-                    data={data}
-                    index="date"
-                    categories={['sales', 'profit']}
-                >
-            )
-    );
+  return status === 'loading' ? (
+    <p>Loading...</p>
+  ) : (
+    <LineChart data={data} index="date" categories={['sales', 'profit']} />
+  );
 }
 ```
 
@@ -90,15 +82,15 @@ Once the config parameters are set in the `TbConfigProvider`, the `useFetchPipe`
 
 ```jsx
 const { data } = useFetchPipe(
-        "my_pipe",
-        {
-            date_from: "2023-01-01",
-            date_to: "2023-03-01",
-        },
-        {
-          token: '<my tinybird token>'
-          // Optional
-          baseUrl: 'https://api.us-east.tinybird.co/v0/pipes/'
-        }
-    )
+  'my_pipe',
+  {
+    date_from: '2023-01-01',
+    date_to: '2023-03-01'
+  },
+  {
+    token: '<my tinybird token>',
+    // Optional
+    baseUrl: 'https://api.us-east.tinybird.co/v0/pipes/'
+  }
+);
 ```

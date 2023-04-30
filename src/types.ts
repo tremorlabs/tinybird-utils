@@ -45,3 +45,5 @@ export type QueryResponse<T> = SWRResponse<T> & {
   warning: QueryError | null;
   status: QueryStatus;
 };
+
+export type ResponseType = 'JSON' | 'CSV' | 'Ndjson' | 'Parquet';
