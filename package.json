@@ -1,13 +1,14 @@
 {
   "name": "trm-tb-plugin",
-  "version": "0.0.8",
-  "description": "Tinybird plugin for data fetching",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "version": "0.0.10",
+  "description": "Plugin to fetch data from Tinybird.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "rollup -c",
     "publish:patch": "npm run build && npm version patch && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1",
