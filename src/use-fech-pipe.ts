@@ -3,15 +3,15 @@ import { useContext } from 'react';
 import { useQuery } from './use-query';
 import { TbConfigContext } from './tb-config';
 import client from './client';
-import { PipeParams, TbConfig, QueryPipe, ResponseType } from './types';
+import { TbConfig, QueryPipe, ResponseType } from './types';
 import { BASE_URL } from './constants';
 
-function queryPipe<T>(
+function queryPipe<PipeParams>(
   name: string,
-  params: Partial<PipeParams<T>> = {},
+  params: Partial<PipeParams> = {},
   config: TbConfig,
   responseType: ResponseType
-): Promise<QueryPipe<T>> {
+): Promise<QueryPipe<PipeParams>> {
   const searchParams = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
     if (!value) return;
@@ -21,21 +21,26 @@ function queryPipe<T>(
   return client(`${name}.${responseType.toLowerCase()}?${searchParams}`, {}, config, responseType);
 }
 
-type PipeFetcherArgs<T> = [
+type PipeFetcherArgs<PipeParams> = [
   name: string,
-  params: Partial<PipeParams<T>>,
+  params: Partial<PipeParams>,
   config: TbConfig,
   responseType: ResponseType
 ];
-async function pipeFetcher<T>([name, params, config, responseType]: PipeFetcherArgs<T>) {
+async function pipeFetcher<PipeParams>([
+  name,
+  params,
+  config,
+  responseType
+]: PipeFetcherArgs<PipeParams>) {
   const { data } = await queryPipe(name, params, config, responseType);
 
   return data;
 }
 
-export default function useFetchPipe<T>(
+export default function useFetchPipe<PipeParams>(
   name: string,
-  queryParams: Partial<PipeParams<T>> = {},
+  queryParams: Partial<PipeParams> = {},
   config?: TbConfig,
   responseType: ResponseType = 'JSON'
 ) {
@@ -45,5 +50,5 @@ export default function useFetchPipe<T>(
 
   if (!token) throw new Error('Tinybird token not found');
 
-  return useQuery([name, queryParams, { token, baseUrl }, responseType], pipeFetcher<T>);
+  return useQuery([name, queryParams, { token, baseUrl }, responseType], pipeFetcher<PipeParams>);
 }

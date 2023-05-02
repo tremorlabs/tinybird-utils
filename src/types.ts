@@ -30,8 +30,6 @@ export class QueryError extends Error {
   }
 }
 
-export type PipeParams<T> = Record<keyof T, string>;
-
 export type QueryPipe<T> = {
   meta: Meta<T>[];
   data: T[];
