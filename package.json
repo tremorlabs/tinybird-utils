@@ -1,6 +1,6 @@
 {
   "name": "trm-tb-plugin",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Plugin to fetch data from Tinybird.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
