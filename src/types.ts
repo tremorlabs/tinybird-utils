@@ -1,11 +1,8 @@
-import type { Dispatch, SetStateAction } from 'react';
 import type { SWRResponse } from 'swr';
 
 export type TbConfig = {
   baseUrl?: string;
-  setBaseUrl?: string;
   token?: string;
-  setToken?: Dispatch<SetStateAction<string>>;
 };
 
 export type ClientResponse<T> = T & { error?: string };

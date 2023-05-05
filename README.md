@@ -1,14 +1,12 @@
 ## Tremor Tinybird Plugin
 
 ```
-npm i trm-tb-plugin
+npm i tinybird-utils
 ```
 
 ### API
 
 The plugin exports a `useFetchPipe` function that provides a single interface to easily query [Tinybird pipes](https://www.tinybird.co/docs/concepts/pipes.html) using [SWR](https://swr.vercel.app/).
-
-_Note_: Only JSON responses are supported for now and SWR `^2.0.0` is required.
 
 **Arguments:**
 
@@ -21,7 +19,7 @@ _Note_: Only JSON responses are supported for now and SWR `^2.0.0` is required.
 
 ```jsx
 // Example.tsx
-import { useFetchPipe } from 'trm-tb-plugin';
+import { useFetchPipe } from 'tinybird-utils';
 import { LineChart } from '@tremor/react';
 
 export default function Example() {
@@ -49,15 +47,17 @@ Configuration parameters:
 
 ```jsx
 // ContextProvider.tsx
-import { TbConfigProvider } from 'trm-tb-plugin';
+import { TbConfigProvider } from 'tinybird-utils';
 
 export default function ContextProvider({ children }) {
-  const [token, setToken] = useState('<my tinybird auth token>');
-  // Optional
-  const [baseUrl, setBaseUrl] = useState('https://ui.us-east.tinybird.co/v0/pipes/');
+  const token = '<my tinybird auth token>';
+  const baseUrl = 'https://ui.us-east.tinybird.co/v0/pipes/';
 
   return (
-    <TbConfigProvider token={token} setToken={setToken} baseUrl={baseUrl} setBaseUrl={setBaseUrl}>
+    <TbConfigProvider
+      token={token}
+      // Optional
+      baseUrl={baseUrl}>
       {children}
     </TbConfigProvider>
   );
@@ -68,7 +68,7 @@ The config values can be set in one of the `TbConfigProvider`s child components 
 
 ```jsx
 // Example.tsx
-import { TbConfigContext } from 'trm-tb-plugin';
+import { TbConfigContext } from 'tinybird-utils';
 import { useContext } from 'react';
 
 ...

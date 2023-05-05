@@ -6,9 +6,7 @@ import { BASE_URL } from './constants';
 
 export const TbConfigContext = createContext<TbConfig>({
   baseUrl: undefined,
-  setBaseUrl: undefined,
-  token: undefined,
-  setToken: undefined
+  token: undefined
 });
 
 export interface TbConfigProviderProps extends TbConfig {
@@ -18,14 +16,12 @@ export interface TbConfigProviderProps extends TbConfig {
 export const TbConfigProvider = ({
   baseUrl = BASE_URL,
   token,
-  setToken,
   children
 }: TbConfigProviderProps) => (
   <TbConfigContext.Provider
     value={{
       baseUrl,
-      token,
-      setToken
+      token
     }}>
     {children}
   </TbConfigContext.Provider>

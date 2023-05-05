@@ -1,7 +1,7 @@
 {
-  "name": "trm-tb-plugin",
-  "version": "0.0.14",
-  "description": "Plugin to fetch data from Tinybird.",
+  "name": "@tremor/tinybird-utils",
+  "version": "0.0.1",
+  "description": "Utilities to fetch data from Tinybird.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "files": [
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mitrotasios/tb-plugin.git"
+    "url": "git+https://github.com/mitrotasios/tinybird-utils.git"
   },
-  "author": "Achilleas Mitrotasios",
-  "license": "ISC",
+  "author": "tremor",
+  "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/mitrotasios/tb-plugin/issues"
+    "url": "https://github.com/mitrotasios/tinybird-utils/issues"
   },
   "types": "dist/index.d.ts",
-  "homepage": "https://github.com/mitrotasios/tb-plugin#readme",
+  "homepage": "https://github.com/mitrotasios/tinybird-utils#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
